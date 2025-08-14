@@ -51,7 +51,7 @@ export default function FeaturedUniversities() {
   ];
 
   return (
-    <section className="py-16 px-10 md:px-20 bg-gray-50">
+    <section className="py-16 px-3 md:px-20 bg-gray-50">
       <div className=" mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="block h-1 w-16 bg-red-400 mx-auto mb-4"></span>

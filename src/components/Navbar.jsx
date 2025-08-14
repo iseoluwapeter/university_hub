@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md fixed w-full z-50 py-3">
-      <div className="px-10 md:px-25 mx-auto flex justify-between h-16 items-center">
+      <div className="px-7 md:px-25 mx-auto flex justify-between h-16 items-center">
         <Link
           to="/"
           className="text-xl font-bold text-blue-500"

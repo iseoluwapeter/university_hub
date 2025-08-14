@@ -42,7 +42,10 @@ const WhyChooseUni = ({
             <ul className="space-y-4">
               {requirements.map((req, index) => (
                 <li key={index} className="flex items-center gap-3">
-                  <FiCheckCircle className="text-green-600 text-2xl" />
+                  <FiCheckCircle
+                    size={40}
+                    className="text-green-600 text-2xl"
+                  />
                   {req}
                 </li>
               ))}

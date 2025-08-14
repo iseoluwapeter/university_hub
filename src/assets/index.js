@@ -1,6 +1,6 @@
 export { default as HomeHero } from "./Learning Photos - Download Free High-Quality Pictures _ Freepik (1).jpeg";
 export { default as HomeHero2 } from "./hercules-hall-surrounded-by-greenery-sunlight-daytime-munich-germany.jpg";
-export { default as LibraryGirl } from "./library_fashion.jpeg";
+export { default as LibraryGirl } from "./library_fashion.jpg";
 export { default as StudyGroup } from "./study-group-african-people.jpg";
 export { default as GraduatingHands } from "./close-up-hands-holding-diplomas-caps.jpg";
 export { default as GraduatingGuy } from "./medium-shot-people-graduating.jpg";

@@ -21,27 +21,27 @@ import UniversityInfo from "../components/UniversityInfo";
 import WhyChooseUni from "../components/WhyChooseUni";
 const benefits = [
   {
-    icon: <FiBook className="text-blue-600 text-2xl" />,
+    icon: <FiBook size={40} className="text-blue-600 text-2xl" />,
     text: "Affordable Tuition Fees designed to make your dream education a reality.",
   },
   {
-    icon: <FiActivity className="text-blue-600 text-2xl" />,
+    icon: <FiActivity size={40} className="text-blue-600 text-2xl" />,
     text: "State-of-the-art Facilities equipped with cutting-edge technology for hands-on learning.",
   },
   {
-    icon: <FiHome className="text-blue-600 text-2xl" />,
+    icon: <FiHome size={40} className="text-blue-600 text-2xl" />,
     text: "Safe and Comfortable Accommodation fostering a vibrant, inclusive campus community.",
   },
   {
-    icon: <FiUsers className="text-blue-600 text-2xl" />,
+    icon: <FiUsers size={40} className="text-blue-600 text-2xl" />,
     text: "Experienced and Passionate Faculty committed to guiding you every step of the way.",
   },
   {
-    icon: <FiBriefcase className="text-blue-600 text-2xl" />,
+    icon: <FiBriefcase size={40} className="text-blue-600 text-2xl" />,
     text: "Robust Career Services & Internship Programs connecting you to top employers.",
   },
   {
-    icon: <FiClock className="text-blue-600 text-2xl" />,
+    icon: <FiClock size={40} className="text-blue-600 text-2xl" />,
     text: "Flexible Learning Options tailored to fit your lifestyle and goals.",
   },
 ];
