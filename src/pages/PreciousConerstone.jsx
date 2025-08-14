@@ -15,7 +15,7 @@ import {
 
 import CollegeCarousel from "../components/CollegeCarousel";
 // import { faculties } from "../components/pcuCollges";
-import { pcuColleges } from "../components/pcuCollEges";
+import pcuColleges from "../components/pcucolleges"
 import { colleges } from "../components/collegesData";
 
 const benefits = [
