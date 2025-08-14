@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ContactCTA from "../components/ContactCTA.JSX";
+import ContactCTA from "../components/ContactCTA";
 import Hero from "../components/Hero";
 import { get_in_touch} from "../assets";
 import QuickContactInfo from "../components/QuickContactInfo";
