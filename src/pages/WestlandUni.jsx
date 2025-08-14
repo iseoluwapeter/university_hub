@@ -61,7 +61,7 @@ const WestlandUni = () => {
         headline={`Westland University, Your Future Starts Here`}
         subtext="Join thousands of students who are transforming their passion into careers. Discover programs designed to empower and inspire."
         primaryBtnText="Apply Now"
-        secondaryBtnText="Explore Courses"
+        // secondaryBtnText="Explore Courses"
         primaryLink="https://westland.edu.ng/contact-us/"
         secondaryLink="#college-carousel"
       />
