@@ -55,7 +55,7 @@ const HowItWorks = () => {
           viewport={{ once: true }}
           className="text-gray-600 max-w-2xl mx-auto mb-12"
         >
-          From understanding your needs to applying with confidence — we make
+          From understanding your needs to applying with confidence we make
           the journey smooth and stress-free.
         </motion.p>
 

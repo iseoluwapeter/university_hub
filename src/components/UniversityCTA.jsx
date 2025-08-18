@@ -32,6 +32,13 @@ const UniversityCTA = ({
           required
         />
         <input
+          type="tel"
+          name="tel"
+          placeholder="Your Number"
+          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
+          required
+        />
+        <input
           type="text"
           name="program"
           placeholder="Program of Interest"

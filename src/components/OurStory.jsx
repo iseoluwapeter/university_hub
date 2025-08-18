@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const OurStory = () => {
   const paragraphs = [
-    "We started with a bold vision — to make university selection stress-free, transparent, and deeply personal.",
+    "We started with a bold vision to make university selection stress-free, transparent, and deeply personal.",
     "What began as late-night conversations between friends has grown into a trusted companion for thousands of students, guiding them toward their dream universities.",
     "From the very first student we helped to the countless success stories today, our mission has remained the same: empower every student to make confident, informed choices about their future.",
   ];
@@ -54,12 +55,13 @@ const OurStory = () => {
           viewport={{ once: true }}
           className="mt-12"
         >
-          <a
+          <Link
+            to="/contact"
             href="#university-cta"
             className="px-8 py-3 bg-red-400 text-white font-semibold rounded-lg shadow-lg hover:bg-red-500 transition duration-300"
           >
             Begin Your Journey
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import {
   FaUniversity,
   FaDollarSign,
   FaQuoteLeft,
+  FaMoneyBillWave,
 } from "react-icons/fa";
 
 // Stats Data
@@ -20,7 +21,7 @@ const stats = [
     label: "Success Rate",
   },
   {
-    icon: <FaDollarSign className="text-yellow-500 text-4xl" />,
+    icon: <FaMoneyBillWave className="text-yellow-500 text-4xl" />,
     number: "N5M+",
     label: "In Tuition Savings",
   },

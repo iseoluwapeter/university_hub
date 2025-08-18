@@ -16,7 +16,7 @@ const Hero = ({
 
   return (
     <div
-      className={`relative h-[45rem] lg:h-screen bg-cover bg-center ${className}`}
+      className={`relative h-[40rem]  bg-cover bg-center ${className}`}
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundAttachment: "fixed",

@@ -35,7 +35,7 @@ export default function Navbar() {
           className="text-xl font-bold text-blue-500"
           onClick={closeMobileMenu}
         >
-          Annetcom <br /> Education Hub
+          Anettcom <br /> Education Hub
         </Link>
 
         {/* Desktop menu */}

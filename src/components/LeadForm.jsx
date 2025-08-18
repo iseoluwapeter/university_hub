@@ -25,7 +25,7 @@ const LeadForm = () => {
           viewport={{ once: true }}
         >
           Share your goals, budget, and preferred course. Our team will
-          recommend universities tailored just for you — helping you make the
+          recommend universities tailored just for you helping you make the
           right choice without the guesswork.
         </motion.p>
 
@@ -47,6 +47,13 @@ const LeadForm = () => {
               type="email"
               placeholder="Email Address"
               className="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
+          <div className="mt-4">
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
             />
           </div>
           <div className="mt-4">

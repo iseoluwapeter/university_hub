@@ -17,8 +17,8 @@ const QuickContactInfo = () => {
     {
       icon: <FaPhoneAlt className="text-blue-600 text-xl" />,
       label: "Phone",
-      value: "+234 801 234 5678",
-      link: "tel:+2348012345678",
+      value: "+234 906 184 5750",
+      link: "tel:+2349061845750",
     },
     {
       icon: <FaEnvelope className="text-blue-600 text-xl" />,

@@ -38,7 +38,7 @@ const features = [
 ];
 const WhyUs = () => {
   return (
-    <section className="py-16 px-2 bg-white">
+    <section className="py-16 px-2 md:px-20 bg-white">
       <div className=" mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left side - Image */}
         <div className="grid grid-cols-2 gap-4">

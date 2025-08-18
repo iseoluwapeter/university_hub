@@ -12,18 +12,18 @@ const WhyChooseUni = ({
   requirementsTitle = "Admission Requirements",
 }) => {
   return (
-    <section className="mx-auto px-10 md:px-25 py-20 flex flex-col md:flex-row gap-15">
+    <section className="mx-auto px-10 md:px-25 py-20 flex flex-col justify-center lg:flex-row gap-10 w-full ">
       {/* Left Image */}
-      <div className="flex justify-center items-center md:w-1/2">
+      <div className="flex justify-center items-center lg:w-1/2">
         <img
           src={imageSrc}
           alt={imageAlt || "University student"}
-          className="rounded-lg shadow-lg max-w-full h-auto"
+          className="rounded-lg shadow-lg w-full h-full object-cover"
         />
       </div>
 
       {/* Right Content */}
-      <div className="md:w-1/2">
+      <div className="lg:w-1/2">
         <h2 className="text-3xl font-bold mb-4">{title}</h2>
         <hr className="border-blue-500 w-16 mb-6" />
 
@@ -43,7 +43,7 @@ const WhyChooseUni = ({
               {requirements.map((req, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <FiCheckCircle
-                    size={40}
+                    size={20}
                     className="text-green-600 text-2xl"
                   />
                   {req}

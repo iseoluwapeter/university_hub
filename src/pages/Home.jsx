@@ -5,10 +5,15 @@ import WhyUs from "../components/WhyUs";
 import FeaturedUniversities from "../components/FeaturedUniversities";
 import LeadForm from "../components/LeadForm";
 import Testimonial from "../components/Testimonial";
-import FinalCTA from "../components/FinalCTA";
+
 import { HomeHero2 } from "../assets";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div>
       <Hero

@@ -9,7 +9,7 @@ export default function FeaturedUniversities() {
     {
       image: Westland_University,
       name: "Westland University",
-      location: "Iwo, Osun state Nigeria",
+      location: "KM 2, Iwo-Ejigbo Road, Iwara Iwo, Osun state Nigeria",
       tagline: "Excellence in Knowledge and Character",
       link: "/universities/westland-university",
       takeaways: [
@@ -30,8 +30,8 @@ export default function FeaturedUniversities() {
     {
       image: Precious_conerstone,
       name: "Precious Cornerstone University",
-      location: "Ota, Ogun State",
-      tagline: "Raising a New Generation of Leaders",
+      location: "Old Ife Road, Ibadan, Oyo State",
+      tagline: "Let there be light",
       link: "/universities/preciousconerstone-university",
       takeaways: [
         {
@@ -69,8 +69,8 @@ export default function FeaturedUniversities() {
             <motion.div
               key={index}
               className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition"
-              initial={{ opacity: 0, x: 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.8,
                 ease: "easeOut",

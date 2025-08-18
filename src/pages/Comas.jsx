@@ -2,8 +2,13 @@ import React from "react";
 import Hero from "../components/Hero";
 import { HomeHero2, Westland_University } from "../assets";
 import Courses from "../components/Courses";
+import { Link } from "react-router-dom";
 
 const Comas = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const departments = [
     {
       name: "Accounting",
@@ -62,6 +67,13 @@ const Comas = () => {
       />
 
       <Courses college="" departments={departments} />
+
+      <Link
+        to="/contact"
+        className="px-10 py-3 rounded-md bg-blue-600 text-white flex justify-center w-80 mx-auto hover:bg-blue-500 transition-all ease-in-out hover:scale-105 mb-4"
+      >
+        Apply For Your Course
+      </Link>
     </div>
   );
 };

@@ -4,12 +4,14 @@ import Hero from "../components/Hero";
 import { HomeHero2 } from "../assets";
 import { pcuDpartments } from "../components/departmentData";
 
-
-
 export default function PcuCourse() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const { pcuSlug } = useParams();
 
-  const faculty = pcuDpartments[pcuSlug]
+  const faculty = pcuDpartments[pcuSlug];
 
   if (!faculty) {
     return <h2 className="text-center mt-10">Faculty not found</h2>;

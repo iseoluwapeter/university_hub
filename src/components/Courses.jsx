@@ -22,6 +22,8 @@ const Courses = ({ college, departments }) => {
                 <span className="font-bold text-gray-900">JAMB:</span>{" "}
                 {dept.jambReq}
               </p>
+
+            
             </div>
           </div>
         ))}

@@ -12,7 +12,7 @@ const ProblemSolution = () => {
   const problems = [
     {
       icon: <FaExclamationTriangle className="text-red-500 w-6 h-6" />,
-      text: "Too many university options — hard to choose.",
+      text: "Too many university options, hard to choose.",
     },
     {
       icon: <FaDollarSign className="text-red-500 w-6 h-6" />,
