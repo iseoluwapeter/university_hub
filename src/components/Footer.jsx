@@ -42,7 +42,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex gap-6 text-xl">
           <a
-            href="https://facebook.com/uppercore"
+            href="https://facebook.com/anettcomtechnologies"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -51,7 +51,7 @@ const Footer = () => {
             <FaFacebookF />
           </a>
           <a
-            href="https://twitter.com/uppercore"
+            href="https://twitter.com/anettcomtechnologies"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
@@ -60,7 +60,7 @@ const Footer = () => {
             <FaTwitter />
           </a>
           <a
-            href="https://instagram.com/uppercore"
+            href="https://instagram.com/anettcometechakademy"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -69,7 +69,7 @@ const Footer = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://linkedin.com/company/uppercore"
+            href="https://linkedin.com/anettcomtechnologies"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

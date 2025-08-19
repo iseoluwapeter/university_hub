@@ -12,6 +12,7 @@ import {
   FiActivity,
   FiClock,
 } from "react-icons/fi";
+import { useEffect } from "react";
 
 import CollegeCarousel from "../components/CollegeCarousel";
 // import { faculties } from "../components/pcuCollges";
@@ -53,6 +54,10 @@ const requirements = [
 ];
 
 const PreciousConerstone = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div>
       <Hero

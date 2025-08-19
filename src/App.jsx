@@ -15,10 +15,14 @@ import Cobmahs from "./pages/Cobmahs";
 import PcuPassa from "./pages/PcuPassa";
 import PcuSms from "./pages/PcuSms";
 import NotFound from "./components/NotFound";
+import {ToastContainer} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
+
 
 const App = () => {
   return (
     <>
+      <ToastContainer/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

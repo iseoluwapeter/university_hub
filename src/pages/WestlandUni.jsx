@@ -19,29 +19,31 @@ import { colleges } from "../components/collegesData";
 
 import UniversityInfo from "../components/UniversityInfo";
 import WhyChooseUni from "../components/WhyChooseUni";
+import { useEffect } from "react";
+
 const benefits = [
   {
-    icon: <FiBook size={25} className="text-blue-600 text-2xl" />,
+    icon: <FiBook size={30} className="text-blue-600 text-2xl" />,
     text: "Affordable Tuition Fees designed to make your dream education a reality.",
   },
   {
-    icon: <FiActivity size={25} className="text-blue-600 text-2xl" />,
+    icon: <FiActivity size={30} className="text-blue-600 text-2xl" />,
     text: "State-of-the-art Facilities equipped with cutting-edge technology for hands-on learning.",
   },
   {
-    icon: <FiHome size={25} className="text-blue-600 text-2xl" />,
+    icon: <FiHome size={30} className="text-blue-600 text-2xl" />,
     text: "Safe and Comfortable Accommodation fostering a vibrant, inclusive campus community.",
   },
   {
-    icon: <FiUsers size={25} className="text-blue-600 text-2xl" />,
+    icon: <FiUsers size={30} className="text-blue-600 text-2xl" />,
     text: "Experienced and Passionate Faculty committed to guiding you every step of the way.",
   },
   {
-    icon: <FiBriefcase size={25} className="text-blue-600 text-2xl" />,
+    icon: <FiBriefcase size={30} className="text-blue-600 text-2xl" />,
     text: "Robust Career Services & Internship Programs connecting you to top employers.",
   },
   {
-    icon: <FiClock size={25} className="text-blue-600 text-2xl" />,
+    icon: <FiClock size={30} className="text-blue-600 text-2xl" />,
     text: "Flexible Learning Options tailored to fit your lifestyle and goals.",
   },
 ];
@@ -54,6 +56,10 @@ const requirements = [
 ];
 
 const WestlandUni = () => {
+  useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
+
   return (
     <div>
       <Hero
