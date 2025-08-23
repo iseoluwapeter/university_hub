@@ -25,11 +25,16 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      # Optional: if your build uses .env
+      # - name: Copy .env to .env.production
+      #   run: cp .env .env.production
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ftp.admilify.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
           local-dir: ./dist/
+          server-dir: public_html/
+          dangerous-clean-slate: true  
