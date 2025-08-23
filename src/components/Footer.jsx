@@ -42,7 +42,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex gap-6 text-xl">
           <a
-            href="https://facebook.com/anettcomtechnologies"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -51,7 +51,7 @@ const Footer = () => {
             <FaFacebookF />
           </a>
           <a
-            href="https://twitter.com/anettcomtechnologies"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
@@ -60,7 +60,7 @@ const Footer = () => {
             <FaTwitter />
           </a>
           <a
-            href="https://instagram.com/anettcometechakademy"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -69,7 +69,7 @@ const Footer = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://linkedin.com/anettcomtechnologies"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -82,7 +82,8 @@ const Footer = () => {
 
       {/* Footer Note */}
       <p className="text-center text-gray-500 text-xs mt-6">
-        © 2025 Annetcom Education Hub. All Rights Reserved.
+        © {new Date().getFullYear()} Admilify. All Rights
+        Reserved.
       </p>
     </footer>
   );
