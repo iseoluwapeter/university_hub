@@ -15,9 +15,9 @@ const Footer = () => {
       <div className="mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Quick Links */}
         <nav className="flex flex-wrap justify-center gap-6 text-sm md:text-base relative">
-          <a href="/" className="hover:text-white transition">
+          <Link href="/" className="hover:text-white transition">
             Home
-          </a>
+          </Link>
 
           {/* Universities Drop-Up */}
           <DropUp
@@ -34,9 +34,9 @@ const Footer = () => {
             ]}
           />
 
-          <a href="/contact" className="hover:text-white transition">
+          <Link to="/contact" className="hover:text-white transition">
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* Social Icons */}
