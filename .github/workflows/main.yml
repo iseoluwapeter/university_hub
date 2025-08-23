@@ -1,25 +1,35 @@
 name: Deploy Website
 
-on: 
+on:
   push:
     branches:
-      - main # Specify branch name
+      - main  
 
-jobs: 
+jobs:
   web-deploy:
     name: Deploying to Production
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get latest code
+      - name: Get latest code
+        uses: actions/checkout@v3
 
-      uses: actions/checkout@v2
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.1.0
-      with:
-        server: ftp.admilify.com
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ftp.admilify.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+          local-dir: ./dist
