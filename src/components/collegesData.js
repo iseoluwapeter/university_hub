@@ -17,13 +17,10 @@ export const colleges = [
     fees: [
       {
         label: "100L 1st semester",
-        items: [
-          { name: "Tuition + Registration", amount: "₦450k" },
-
-        ],
+        items: [{ name: "Tuition + Registration", amount: "₦450k" }],
       },
-      { label: "Subsequently with hostel", amount: "₦375" },
-      { label: "Without hostel", amount: "₦325" },
+      { label: "Subsequently with hostel", amount: "₦375k" },
+      { label: "Without hostel", amount: "₦325k" },
     ],
   },
   {
@@ -47,8 +44,8 @@ export const colleges = [
           //   { name: "TOTAL", amount: "₦430" },
         ],
       },
-      { label: "Subsequently with hostel", amount: "₦355" },
-      { label: "Without hostel", amount: "₦305" },
+      { label: "Subsequently with hostel", amount: "₦355k" },
+      { label: "Without hostel", amount: "₦305k" },
     ],
   },
   {

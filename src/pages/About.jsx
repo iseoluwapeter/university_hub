@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Hero from "../components/Hero";
-import { aboutus, HomeHero2 } from "../assets";
+import { aboutus } from "../assets";
 import ProblemSolution from "../components/ProblemSolution";
 import OurStory from "../components/OurStory";
 import HowItWorks from "../components/HowItWorks";
 import KeyResults from "../components/KeyResults";
-import UniversityCTA from "../components/UniversityCTA";
+import ContactCTA from "../components/ContactCTA";
+
 
 const About = () => {
   // Scroll to top on page load
@@ -27,15 +28,19 @@ const About = () => {
       <OurStory />
       <HowItWorks />
       <KeyResults />
-      <UniversityCTA
-        id="university-cta"
-        title="Unlock Your Academic Future"
-        description="Connect with top universities and start your journey toward success today."
-        buttonText="Apply Now!"
-        onSubmit={(formData) => {
-          console.log("Form Data:", Object.fromEntries(formData));
-        }}
-      />
+      <div id="apply-section">
+        <ContactCTA
+          title="Your Future Starts Here"
+          description="Take the first step toward a brighter tomorrow with guidance tailored to you."
+          buttonText="Get Started"
+          formFields={[
+            { type: "text", placeholder: "Full Name" },
+            { type: "email", placeholder: "Email Address" },
+            { type: "tel", placeholder: "Phone Number" },
+            { type: "text", placeholder: "Program of Interest" },
+          ]}
+        />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = ({
   backgroundImage,
@@ -16,7 +17,7 @@ const Hero = ({
 
   return (
     <div
-      className={`relative h-[40rem]  bg-cover bg-center ${className}`}
+      className={`relative h-[30rem] lg:h-[40rem]  bg-cover bg-center ${className}`}
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundAttachment: "fixed",
@@ -35,7 +36,7 @@ const Hero = ({
       >
         {headline && (
           <motion.h1
-            className="text-3xl font-bold md:text-6xl max-w-6xl"
+            className="text-2xl font-bold  md:text-5xl max-w-6xl"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
@@ -66,7 +67,7 @@ const Hero = ({
           >
             {hasPrimary && (
               <a
-                href={primaryLink}
+                href="#apply-section"
                 className="bg-red-400 hover:bg-red-300 px-6 py-3 text-white hover:text-gray-900 font-semibold transition"
               >
                 {primaryBtnText}
@@ -74,21 +75,22 @@ const Hero = ({
             )}
 
             {hasSecondary && (
-              <button
+              <Link
+                to={secondaryLink}
                 className="border border-white text-white hover:text-gray-900 hover:bg-gray-200 px-6 py-3 font-semibold transition"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (typeof secondaryLink === "function") {
-                    secondaryLink();
-                  } else {
-                    document
-                      .getElementById(secondaryLink)
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                // onClick={(e) => {
+                //   e.preventDefault();
+                //   if (typeof secondaryLink === "function") {
+                //     secondaryLink();
+                //   } else {
+                //     document
+                //       .getElementById(secondaryLink)
+                //       ?.scrollIntoView({ behavior: "smooth" });
+                //   }
+                // }}
               >
                 {secondaryBtnText}
-              </button>
+              </Link>
             )}
           </motion.div>
         )}

@@ -30,7 +30,7 @@ const WhyChooseUniversity = ({
         <ul className="space-y-4 mb-6">
           {benefits.map(({ icon, text }, index) => (
             <li key={index} className="flex items-center gap-3">
-              {icon}
+              {/* {icon} */}
               {text}
             </li>
           ))}
@@ -41,8 +41,8 @@ const WhyChooseUniversity = ({
             <h3 className="text-2xl font-semibold mb-3">{requirementsTitle}</h3>
             <ul className="space-y-4">
               {requirements.map((req, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <FiCheckCircle className="text-green-600 text-2xl" />
+                <li key={index} className="flex items-center gap-3 ">
+                  {/* <FiCheckCircle className="text-green-600 text-7xl md:text-2xl" /> */}
                   {req}
                 </li>
               ))}

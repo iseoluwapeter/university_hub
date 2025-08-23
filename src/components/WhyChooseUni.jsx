@@ -8,7 +8,7 @@ const WhyChooseUni = ({
   benefits,
   requirements,
   ctaText,
-  ctaLink,
+  onCtaClick,
   requirementsTitle = "Admission Requirements",
 }) => {
   return (
@@ -29,8 +29,10 @@ const WhyChooseUni = ({
 
         <ul className="space-y-4 mb-6">
           {benefits.map(({ icon, text }, index) => (
-            <li key={index} className="flex items-center gap-3">
-              {icon}
+            <li key={index} className="flex  gap-3">
+              {/* {icon} */}
+              <span className="text-red-400 font-bold text-xl">✔</span>
+
               {text}
             </li>
           ))}
@@ -41,8 +43,13 @@ const WhyChooseUni = ({
             <h3 className="text-2xl font-semibold mb-3">{requirementsTitle}</h3>
             <ul className="space-y-4">
               {requirements.map((req, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <FiCheckCircle size={26} className="text-green-600 text-4xl" />
+                <li key={index} className="flex gap-3">
+                  {/* <FiCheckCircle
+                    size={26}
+                    className="text-green-600 text-4xl"
+                  /> */}
+                  <span className="text-blue-400 font-bold text-xl">✅</span>
+
                   {req}
                 </li>
               ))}
@@ -52,10 +59,10 @@ const WhyChooseUni = ({
 
         <p className="mt-6 font-semibold text-blue-600">{ctaText}</p>
 
-        <button className="bg-red-400 text-white py-4 px-8 mt-5 transition-all ease-in-out hover:scale-105">
-          <a href={ctaLink} target="_blank" rel="noopener noreferrer">
-            Apply Now
-          </a>
+        <button
+          className="bg-red-400 text-white py-4 px-8 mt-5 transition-all ease-in-out hover:scale-105"
+        >
+          <a href="#apply-section">Apply Now</a>
         </button>
       </div>
     </section>

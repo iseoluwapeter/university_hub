@@ -15,7 +15,7 @@ const Contact = () => {
       <Hero
         backgroundImage={get_in_touch}
         headline={`Get In Touch`}
-        subtext="Whether you have questions about our process, need university recommendations, or want to partner with us — we’d love to hear from you."
+        subtext="Whether you have questions about our process, need university recommendations, or want to partner with us we’d love to hear from you."
         primaryBtnText="Contact Us"
         secondaryBtnText="Explore Universities"
       />
@@ -25,10 +25,14 @@ const Contact = () => {
         description="Take the first step toward a brighter tomorrow with guidance tailored to you."
         buttonText="Get Started"
         formFields={[
-          { type: "text", placeholder: "Full Name" },
-          { type: "email", placeholder: "Email Address" },
-          { type: "tel", placeholder: "Phone Number" },
-          { type: "text", placeholder: "Program of Interest" },
+          { type: "text", name: "fullname", placeholder: "Full Name" },
+          { type: "email", name: "email", placeholder: "Email Address" },
+          { type: "tel", name: "phoneno", placeholder: "Phone Number" },
+          {
+            type: "text",
+            name: "programme",
+            placeholder: "Program of Interest",
+          },
         ]}
       />
 

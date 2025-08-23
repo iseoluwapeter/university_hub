@@ -36,7 +36,7 @@ export default function FeaturedUniversities() {
       takeaways: [
         {
           icon: <FaMoneyBillWave className="text-green-500" />,
-          text: "Scholarships Available",
+          text: "Affordable Tution",
         },
         {
           icon: <FaClock className="text-blue-500" />,

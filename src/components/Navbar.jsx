@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { admilify_logo } from "../assets";
 
 const navLinks = [
   { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
   {
     label: "Universities",
     dropdown: [
@@ -18,7 +20,6 @@ const navLinks = [
       },
     ],
   },
-  { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -35,7 +36,11 @@ export default function Navbar() {
           className="text-xl font-bold text-blue-500"
           onClick={closeMobileMenu}
         >
-          Anettcom <br /> Education Hub
+          <img
+            src={admilify_logo}
+            alt="admilify_logo"
+            className="w-[130px] lg:w-[200px]"
+          />
         </Link>
 
         {/* Desktop menu */}

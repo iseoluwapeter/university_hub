@@ -55,13 +55,13 @@ const OurStory = () => {
           viewport={{ once: true }}
           className="mt-12"
         >
-          <Link
+          <button
             to="/contact"
             href="#university-cta"
             className="px-8 py-3 bg-red-400 text-white font-semibold rounded-lg shadow-lg hover:bg-red-500 transition duration-300"
           >
-            Begin Your Journey
-          </Link>
+            <a href="#apply-section">Begin Your Journey</a>
+          </button>
         </motion.div>
       </div>
     </section>

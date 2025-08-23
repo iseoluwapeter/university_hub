@@ -13,6 +13,7 @@ import {
   FiClock,
 } from "react-icons/fi";
 import { useEffect } from "react";
+import ContactCTA from "../components/ContactCTA";
 
 import CollegeCarousel from "../components/CollegeCarousel";
 // import { faculties } from "../components/pcuCollges";
@@ -95,6 +96,20 @@ const PreciousConerstone = () => {
           title="Discover Our Faculties"
           backgroundImage={HomeHero2}
           data={pcuColleges}
+        />
+      </div>
+
+      <div id="apply-section">
+        <ContactCTA
+          title="Your Future Starts Here"
+          description="Take the first step toward a brighter tomorrow with guidance tailored to you."
+          buttonText="Get Started"
+          formFields={[
+            { type: "text", placeholder: "Full Name" },
+            { type: "email", placeholder: "Email Address" },
+            { type: "tel", placeholder: "Phone Number" },
+            { type: "text", placeholder: "Program of Interest" },
+          ]}
         />
       </div>
     </div>

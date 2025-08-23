@@ -7,8 +7,6 @@ const UniversityCTA = ({
   description = "Apply today and join a community dedicated to your success.",
   buttonText = "Apply Now",
 }) => {
-  const [faculties, setFaculties] = useState([]);
-  const [departments, setDepartments] = useState([]);
   const [formData, setFormData] = useState({
     surname: "",
     firstName: "",
@@ -20,271 +18,281 @@ const UniversityCTA = ({
     department: "",
   });
 
-  // API KEYS
-  const API_KEY_OFM = import.meta.env.VITE_API_KEY_OFM;
-  const API_KEY_BELRALD = import.meta.env.VITE_API_KEY_BELRALD;
+  const [faculties, setFaculties] = useState([]);
+  const [departments, setDepartments] = useState([]);
 
-  //API BASE URL
+  const API_KEY_OFM = import.meta.env.VITE_API_KEY_OFM;
   const BASE_URL_OFM = import.meta.env.VITE_BASE_URL_OFM;
   const BASE_URL_BELRALD = import.meta.env.VITE_BASE_URL_BELRALD;
+  const API_KEY_BELRALD = import.meta.env.VITE_API_KEY_BELRALD;
 
-  //FETCH FACULTIES
   useEffect(() => {
     const fetchFaculties = async () => {
       try {
-        const { data } = await axios.get(`${BASE_URL_OFM}/faculties/wlu`, {
-          headers: { "x-api-key": API_KEY_OFM, Accept: "application/json" },
+        const res = await axios.get(`${BASE_URL_OFM}/faculties/wlu`, {
+          headers: { "x-api-key": API_KEY_OFM },
         });
-
-        setFaculties(data);
-
-        if (data.length > 0) {
-          const firstFacultyId = data[0].id;
-          setFormData((prev) => ({
-            ...prev,
-            academicProgramme: firstFacultyId,
-          }));
-          await fetchDepartments(firstFacultyId);
-        }
+        setFaculties(res.data.faculties);
+        // console.log("Fetched Data", res.data.faculties);
       } catch (error) {
-        console.log("error fetching faculties", error);
-        toast.error("Error laoding faculties");
+        // console.log("Error", error);
       }
     };
-
     fetchFaculties();
   }, []);
 
-  // FETCH DEPARTMENTS BASED ON FACULTY
-  const fetchDepartments = async (facultyId) => {
-    try {
-      const { data } = await axios.get(
-        `${BASE_URL_OFM}/departments/${facultyId}`,
-        {
-          headers: { "x-api-key": API_KEY_OFM, Accept: "application/json" },
-        }
-      );
-      setDepartments(data);
-
-      if (data.length > 0) {
-        setFormData((prev) => ({
-          ...prev,
-          department: data[0].id,
-        }));
-      }
-    } catch (error) {
-      console.log("error fetching departments:", error);
-      toast.error("Error loading departments");
-    }
-  };
-
-  //HANDLE FORM INPUT CHANGE
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  //HANDLE FACULTY CHANGE
-  const handleFacultyChange = async (e) => {
-    const facultyId = e.target.value;
-    setFormData({
-      ...formData,
-      academicProgramme: facultyId,
-      department: "",
-    });
-    await fetchDepartments(facultyId);
-  };
+  //Fetch department based on selected faculty
+  useEffect(() => {
+    if (!formData.academicProgramme) return;
+    // console.log("selected faculty", formData.academicProgramme);
 
-  //HANDLE DEPARTMENT CHANGE
-  const handleDeptChange = (e) => {
-    setFormData({
-      ...formData,
-      department: e.target.value,
-    });
-  };
+    const fetchDepartments = async () => {
+      try {
+        const res = await axios.get(
+          `${BASE_URL_OFM}/departments/${formData.academicProgramme}`,
+          {
+            headers: { "x-api-key": API_KEY_OFM },
+          }
+        );
+        setDepartments(res.data.departments);
+        // console.log("Fetched Departments", res.data.departments);
+      } catch (error) {
+        // console.log("Error fetching departments", error);
+      }
+    };
 
-  // SUBMIT FORM TO BOTH ENDPOINTS
+    fetchDepartments();
+  }, [formData.academicProgramme]);
+
+  // handle submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      // 1. Send to OFM
-      await axios.post(`${BASE_URL_OFM}/applicant`, formData, {
-        headers: {
-          "x-api-key": API_KEY_OFM,
-          "Content-Type": "application/json",
-        },
-      });
+    const payload = {
+      ...formData,
+      academicProgramme: Number(formData.academicProgramme),
+      department: Number(formData.department),
+    };
+    // console.log("Payload to submit", payload);
 
-      // 2. Send to BELRALD
-      const belraldPayload = {
-        pages: [
-          {
-            title: "Bio-Data Details",
-            fields: [
-              {
-                title: "Personal Information",
-                fields: [
-                  { surname: formData.surname },
-                  { firstName: formData.firstName },
-                  { middleName: formData.middleName },
-                  { emailAddress: formData.emailAddress },
-                  { phoneNumber: formData.phoneNumber },
-                  { gender: formData.gender },
-                ],
-              },
-            ],
-          },
-          {
-            title: "Programme Details",
-            fields: [
-              {
-                academicProgramme: faculties.find(
-                  (f) => f.id === Number(formData.academicProgramme)
-                )?.name,
-              },
-              {
-                department: departments.find(
-                  (d) => d.id === Number(formData.department)
-                )?.name,
-              },
-            ],
-          },
-        ],
-      };
+    //filter out names from id for belrald endpoint
+    const programmeName =
+      faculties.find(
+        (prog) => String(prog.id) === String(formData.academicProgramme)
+      )?.name || "";
 
-      await axios.post(
-        `${BASE_URL_BELRALD}/form/create-external/68a35885e8a2c63f5fad76cf`,
-        belraldPayload,
+    const departmentName = departments[Number(formData.department) - 1]?.name;
+
+    // console.log(departmentName)
+
+    // console.log("programme name", programmeName);
+    // console.log("Faculties array:", faculties);
+    // console.log("Searching for:", formData.academicProgramme);
+
+    const Belrald_payload = {
+      pages: [
         {
-          headers: {
-            "x-api-key": API_KEY_BELRALD,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+          title: "Bio-Data Details",
+          fields: [
+            {
+              title: "Personal Information",
+              fields: [
+                {
+                  surname: formData.surname,
+                },
+                {
+                  firstName: formData.firstName,
+                },
+                {
+                  middleName: formData.middleName,
+                },
+                {
+                  emailAddress: formData.emailAddress,
+                },
+                {
+                  phoneNumber: formData.phoneNumber,
+                },
+                {
+                  gender: formData.gender,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: "Programme Details",
+          fields: [
+            {
+              academicProgramme: programmeName,
+            },
+            {
+              department: departmentName,
+            },
+          ],
+        },
+      ],
+    };
 
-      alert("Form submitted successfully!");
-      toast.success("Form submmitted successfully");
+    // console.log("Belrald_payload", Belrald_payload);
+
+    //ofm submission
+    try {
+      // console.log("Submitting OFM payload:", payload);
+      const ofm_res = await axios.post(`${BASE_URL_OFM}/applicant`, payload, {
+        headers: { "x-api-key": API_KEY_OFM },
+      });
+      // console.log("Ofm Response", ofm_res.data);
+      // console.log("ofm Posted info", payload);
+      toast.success("Application submitted succesfully");
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Something went wrong, please try again.");
-      toast.error("Something went wrong. Please try again");
+      // console.log("OFM submission error:", error);
+      // toast.error("Failed to submit to OFM");
     }
+
+    //Belrald submission
+    try {
+      // console.log("Submitting Belrald payload:", Belrald_payload);
+      const bel_res = await axios.post(`${BASE_URL_BELRALD}`, Belrald_payload, {
+        headers: { "x-api-key": API_KEY_BELRALD },
+      });
+      // toast.success("belrald submitted");
+      // console.log("Belrald response", bel_res.data);
+      // console.log("Belrald posted info", Belrald_payload);
+    } catch (error) {
+      // console.log("Error submitting form:", error);
+      // toast.error("Failed to submit application");
+    }
+    setFormData({
+      surname: "",
+      firstName: "",
+      middleName: "",
+      emailAddress: "",
+      phoneNumber: "",
+      gender: "",
+      academicProgramme: "",
+      department: "",
+    });
   };
 
   return (
-    <section className="bg-gray-50 text-gray-600 py-12 px-4 text-center">
-      <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
-      <p className="mb-6">{description}</p>
+    <div className="bg-blue-50 p-10">
+      <div className="max-w-2xl mx-auto p-6">
+        <h2 className="text-4xl font-bold mb-4 text-gray-600 text-center">
+          {title}
+        </h2>
+        <p className="mb-6 text-center text-gray-700">{description}</p>
 
-      <form
-        className="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4"
-        onSubmit={handleSubmit}
-      >
-        <input
-          type="text"
-          name="surname"
-          placeholder="Surname"
-          value={formData.surname}
-          onChange={handleInputChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
-        />
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={handleInputChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
-        />
-        <input
-          type="text"
-          name="middleName"
-          placeholder="Middle Name"
-          value={formData.middleName}
-          onChange={handleInputChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-        />
-        <input
-          type="email"
-          name="emailAddress"
-          placeholder="Email"
-          value={formData.emailAddress}
-          onChange={handleInputChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
-        />
-        <input
-          type="tel"
-          name="phoneNumber"
-          placeholder="Phone Number"
-          value={formData.phoneNumber}
-          onChange={handleInputChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
-        />
-
-        {/* gender */}
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleInputChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
+        <form
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          onSubmit={handleSubmit}
         >
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-
-        {/* Faculty */}
-        <select
-          name="academicProgramme"
-          value={formData.academicProgramme}
-          onChange={handleFacultyChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
-        >
-          <option value="">--- Select Faculty ---</option>
-          {faculties.map((faculty) => (
-            <option key={faculty.id} value={faculty.id}>
-              {faculty.name}
-            </option>
-          ))}
-        </select>
-
-        {/* Department */}
-        <select
-          name="department"
-          value={formData.department}
-          onChange={handleDeptChange}
-          className="w-full px-4 py-2 rounded text-gray-800 border border-gray-300"
-          required
-        >
-          <option value="">--- Select Department ---</option>
-          {departments.map((dept) => (
-            <option key={dept.id} value={dept.id}>
-              {dept.name}
-            </option>
-          ))}
-        </select>
-
-        {/* Button — span full width, center on its row */}
-        <div className="col-span-1 md:col-span-2 flex justify-center mt-4">
-          <button
-            type="submit"
-            className="px-8 bg-blue-600 text-white font-bold py-2 rounded hover:bg-blue-700 transition"
+          <input
+            type="text"
+            name="surname"
+            value={formData.surname}
+            onChange={handleChange}
+            placeholder="Surname"
+            className="w-full p-2 border border-gray-400 rounded"
+            required
+          />
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            placeholder="First Name"
+            className="w-full p-2 border border-gray-400 rounded"
+            required
+          />
+          <input
+            type="text"
+            name="middleName"
+            value={formData.middleName}
+            onChange={handleChange}
+            placeholder="Middle Name"
+            className="w-full p-2 border border-gray-400 rounded"
+          />
+          <input
+            type="email"
+            name="emailAddress"
+            value={formData.emailAddress}
+            onChange={handleChange}
+            placeholder="Email Address"
+            className="w-full p-2 border border-gray-400 rounded"
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-400 rounded"
+            required
+          />
+          <select
+            name="gender"
+            className="w-full p-2 border border-gray-400 rounded"
+            required
+            value={formData.gender}
+            onChange={handleChange}
           >
-            {buttonText}
-          </button>
-        </div>
-      </form>
-    </section>
+            <option value="">-- Select Gender --</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          {/* Faculty */}
+          <select
+            name="academicProgramme"
+            className="w-full p-2 border border-gray-400 rounded"
+            required
+            value={formData.academicProgramme}
+            onChange={handleChange}
+          >
+            <option value="">--- Select Faculty ---</option>
+            {faculties.map((f) => (
+              <option value={f.id} key={f.id}>
+                {f.name}
+              </option>
+            ))}
+          </select>
+
+          {/* Department */}
+          <select
+            name="department"
+            className="w-full p-2 border border-gray-400 rounded mt-2"
+            required
+            value={formData.department}
+            onChange={handleChange}
+          >
+            <option value="">--- Select Department ---</option>
+            {departments.map((d, index) => (
+              <option value={index + 1} key={index}>
+                {d.name}
+              </option>
+            ))}
+          </select>
+
+          {/* Submit Button - Full Width Row & Centered */}
+          <div className="col-span-1 md:col-span-2 flex justify-center mt-4">
+            <button
+              type="submit"
+              className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              {buttonText}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

@@ -20,6 +20,7 @@ import { colleges } from "../components/collegesData";
 import UniversityInfo from "../components/UniversityInfo";
 import WhyChooseUni from "../components/WhyChooseUni";
 import { useEffect } from "react";
+import { useRef } from "react";
 
 const benefits = [
   {
@@ -27,23 +28,23 @@ const benefits = [
     text: "Affordable Tuition Fees designed to make your dream education a reality.",
   },
   {
-    icon: <FiActivity size={30} className="text-blue-600 text-2xl" />,
+    icon: <FiActivity className="text-blue-600 text-2xl" />,
     text: "State-of-the-art Facilities equipped with cutting-edge technology for hands-on learning.",
   },
   {
-    icon: <FiHome size={30} className="text-blue-600 text-2xl" />,
+    icon: <FiHome className="text-blue-600 text-2xl" />,
     text: "Safe and Comfortable Accommodation fostering a vibrant, inclusive campus community.",
   },
   {
-    icon: <FiUsers size={30} className="text-blue-600 text-2xl" />,
+    icon: <FiUsers className="text-blue-600 text-2xl" />,
     text: "Experienced and Passionate Faculty committed to guiding you every step of the way.",
   },
   {
-    icon: <FiBriefcase size={30} className="text-blue-600 text-2xl" />,
+    icon: <FiBriefcase className="text-blue-600 text-2xl" />,
     text: "Robust Career Services & Internship Programs connecting you to top employers.",
   },
   {
-    icon: <FiClock size={30} className="text-blue-600 text-2xl" />,
+    icon: <FiClock className="text-blue-600 text-2xl" />,
     text: "Flexible Learning Options tailored to fit your lifestyle and goals.",
   },
 ];
@@ -57,8 +58,14 @@ const requirements = [
 
 const WestlandUni = () => {
   useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const universityCTARef = useRef(null);
+
+  const scrollToUniversityCTA = () => {
+    universityCTARef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -73,7 +80,7 @@ const WestlandUni = () => {
       />
       <UniversityInfo
         imageSrc="https://yourcdn.com/university-building.jpg"
-        title="What Makes Our Westland Stand Out?"
+        title="What Makes Westland Stand Out?"
         subtitle="Join a vibrant community of driven students and passionate educators, dedicated to shaping tomorrow's leaders."
         points={[
           "Top-ranked programs in multiple fields",
@@ -90,7 +97,7 @@ const WestlandUni = () => {
         benefits={benefits}
         requirements={requirements}
         ctaText="Ready to unlock your future? Join Westland University and start your journey to success today!"
-        ctaLink="https://westland.edu.ng/contact-us/"
+        onCtaClick={scrollToUniversityCTA}
       />
       <div id="colleges-carousel">
         <CollegeCarousel
@@ -101,14 +108,16 @@ const WestlandUni = () => {
       </div>
 
       <Testimonial />
-      <UniversityCTA
-        title="Apply to Westland University"
-        description="Your best start for academic success"
-        buttonText="Apply Now!"
-        onSubmit={(formData) => {
-          console.log("Form Data:", Object.fromEntries(formData));
-        }}
-      />
+      <div id="apply-section">
+        <UniversityCTA
+          title="Apply to Westland University"
+          description="Your best start for academic success"
+          buttonText="Apply Now!"
+          onSubmit={(formData) => {
+            console.log("Form Data:", Object.fromEntries(formData));
+          }}
+        />
+      </div>
     </div>
   );
 };

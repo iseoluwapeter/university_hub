@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import { HomeHero2, Westland_University } from "../assets";
 import Courses from "../components/Courses";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Cobmahs = () => {
   useEffect(() => {
@@ -38,16 +39,16 @@ const Cobmahs = () => {
         backgroundImage={Westland_University}
         headline={`College of Basic Medical Sciences (COBMAHS) `}
         subtext="Westland University,   Iwo, Osun state"
-        primaryBtnText="Apply Now"
-        // secondaryBtnText="Explore Courses"
-        primaryLink="https://westland.edu.ng/contact-us/"
-        secondaryLink="#college-carousel"
+        // primaryBtnText="Apply Now"
+        secondaryBtnText="Apply Now"
+        // primaryLink="https://westland.edu.ng/contact-us/"
+        secondaryLink="/universities/westland-university"
       />
 
       <Courses college="" departments={departments} />
 
       <Link
-        to="/contact"
+        to="/universities/westland-university"
         className="px-10 py-3 rounded-md bg-blue-600 text-white flex justify-center w-80 mx-auto hover:bg-blue-500 transition-all ease-in-out hover:scale-105 mb-4"
       >
         Apply For Your Course

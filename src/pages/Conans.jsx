@@ -4,6 +4,7 @@ import { HomeHero2, Westland_University } from "../assets";
 import Courses from "../components/Courses";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Conans = () => {
   useEffect(() => {
@@ -59,15 +60,15 @@ const Conans = () => {
         backgroundImage={Westland_University}
         headline="College of Natural and Applied Sciences"
         subtext="Westland University, Iwo, Osun State"
-        primaryBtnText="Apply Now"
-        primaryLink="https://westland.edu.ng/contact-us/"
+        secondaryBtnText="Apply Now"
+        secondaryLink="/universities/westland-university"
       />
 
       <div ref={coursesRef}>
         <Courses college=" " departments={departments} />
 
         <Link
-          to="/contact"
+          to="/universities/westland-university"
           className="px-10 py-3 rounded-md bg-blue-600 text-white flex justify-center w-80 mx-auto hover:bg-blue-500 transition-all ease-in-out hover:scale-105 mb-4"
         >
           Apply For Your Course
