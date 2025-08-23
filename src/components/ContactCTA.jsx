@@ -11,6 +11,7 @@ const ContactCTA = ({ title, description, buttonText, formFields }) => {
   });
 
   const API_KEY_OFM = import.meta.env.VITE_API_KEY_OFM;
+  const BASE_URL_OFM = import.meta.env.VITE_BASE_URL_OFM;
 
   const handleChange = (e) => {
     setFormData({
@@ -22,7 +23,7 @@ const ContactCTA = ({ title, description, buttonText, formFields }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`/myapi/api/inquiry`, formData, {
+      const response = await axios.post(`${BASE_URL_OFM}/inquiry`, formData, {
         headers: {
           "Content-Type": "application/json",
           "x-api-key": API_KEY_OFM,
@@ -32,6 +33,7 @@ const ContactCTA = ({ title, description, buttonText, formFields }) => {
       toast.success("Form submitted successfully!");
     } catch (error) {
       // console.error("Error submitting form:", error);
+      toast.error("Failed to submit form")
     } finally {
       setFormData({
         fullname: "",
@@ -53,6 +55,7 @@ const ContactCTA = ({ title, description, buttonText, formFields }) => {
             key={index}
             type={field.type}
             name={field.name}
+            required
             placeholder={field.placeholder}
             value={formData[field.name]}
             onChange={handleChange}

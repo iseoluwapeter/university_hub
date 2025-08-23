@@ -12,7 +12,7 @@ export { default as Management_Science } from "./management_science.jpg";
 export { default as Applied_Science } from "./natural_science.jpg";
 export { default as PCU_image } from "./pcu_image.jpg";
 export { default as Testimonial_1 } from "./testimony_1 (1).jpg";
-export { default as Testimonial_2 } from "./testimony_1 (2).jpg";
+export { default as Testimonial_2 } from "./male_testimonial.jpg";
 export {default as Testimonial_3} from "./testimonial_3.jpg"
 export {default as Westland_Reg} from "./westland_reg.jpg"
 export {default as get_in_touch} from "./contact.jpg"
