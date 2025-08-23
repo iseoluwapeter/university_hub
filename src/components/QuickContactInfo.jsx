@@ -23,8 +23,8 @@ const QuickContactInfo = () => {
     {
       icon: <FaEnvelope className="text-blue-600 text-xl" />,
       label: "Email",
-      value: "info@universityconnect.com",
-      link: "mailto:info@universityconnect.com",
+      value: "info@admilify.com",
+      link: "mailto:info@admilify.com",
     },
     {
       icon: <FaClock className="text-blue-600 text-xl" />,
